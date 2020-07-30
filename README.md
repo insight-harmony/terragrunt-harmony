@@ -28,8 +28,13 @@ We order the deployment file names and remote state path per the following conve
 
 We then will rely on this hierarchy in the remote state and deployment file. 
 
-Remote State: `https://s3.amazonaws.com/<bucket>/harmony/mainnet/prod/aws/us-east-1/validator/1/terraform.tfstate`
-Deployment File: `harmony.mainnet.prod.aws.us-east-1.validator.1.yaml`
+**Remote State:**
+
+`s3://.../<bucket>/harmony/mainnet/prod/aws/us-east-1/validator/1/terraform.tfstate`
+
+**Deployment File:**
+
+`harmony.mainnet.prod.aws.us-east-1.validator.1.yaml`
 
 Deployment files are created locally by the nukikata CLI in the `deployments` directory and are referenced in each
  deployment run. 
