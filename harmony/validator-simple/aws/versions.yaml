@@ -1,0 +1,4 @@
+dev: master
+test: master
+stage: master
+prod: master

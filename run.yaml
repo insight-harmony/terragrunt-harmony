@@ -1,0 +1,7 @@
+namespace: "harmony"
+provider: "aws"
+network_name: "testnet"
+region: "us-east-1"
+environment: "dev"
+stack: "validator-simple"
+deployment_id: 1

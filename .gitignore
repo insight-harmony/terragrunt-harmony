@@ -1,1 +1,32 @@
 .idea
+.vscode/
+
+# Terraform and terragrunt
+*.tfstate/
+*.tfstate.backup
+*.tfplan
+.terragrunt-cache/
+.terraform/
+tg-backend.tf
+tg-provider.tf
+
+
+.bak
+scratch*
+
+#
+# Configs
+#
+secrets.yaml
+.circleci/.configs
+ansible_inventory.tpl
+
+# Python
+env/
+venv/
+*.pyc
+Pipfile
+Pipfile.lock
+
+# Other
+id_rsa_test*
