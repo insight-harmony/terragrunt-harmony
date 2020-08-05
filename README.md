@@ -13,7 +13,7 @@ pip3 install nukikata
 nukikata . 
 ```
 
-### Remote State and Deployment ID 
+### Run File, Deployment ID, and Remote State  
 
 We order the deployment file names and remote state path per the following convetion. 
 
@@ -31,23 +31,21 @@ We then will rely on this hierarchy in the remote state and deployment file.
 
 **Run File:** 
 
-`run.yaml` An inherited file closest to the stack being deployed. 
+`run.yaml` An inherited file closest to the stack being deployed that is used to reference the deployment file.
 ```yaml
 namespace: "harmony"
-provider: "aws"
 network_name: "testnet"
-region: "us-east-1"
 environment: "dev"
+provider: "aws"
+region: "us-east-1"
 stack: "validator-simple"
-deployment_id: 1
+deployment_id: 1  # Something to discriminate between deployments - ie blue/green
 ```
 **Deployment File:**
 
 `terragrunt-harmony/deployments/harmony.mainnet.prod.aws.us-east-1.validator.1.yaml`
 
-Deployment files are created locally by the nukikata CLI in the `deployments` directory and are referenced in each
- deployment run via the `run.yaml` which references the deployment file. 
-
+Deployment files are created locally by the nukikata CLI in the `deployments` directory and contain all the variables to configure a stack. These variables are lifted out of the underlying terraform modules. 
 
 **Remote State:**
 
