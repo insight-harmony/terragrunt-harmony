@@ -17,9 +17,13 @@ scratch*
 #
 # Configs
 #
-secrets.yaml
+secrets.yml
+run.yml
+deployments/
+!deployments/.gitkeep
 .circleci/.configs
 ansible_inventory.tpl
+
 
 # Python
 env/
