@@ -18,7 +18,7 @@ action_:
     - modify: Modify Existing
     - apply: Deploy existing
     - destroy: Destroy existing
-    - validator: Deploy a simple validator
+#    - validator: Deploy a simple validator
 
 # Install Dependencies
 installs_:
@@ -59,19 +59,31 @@ create_:
 # Modify Existing
 modify_list_:
   type: checkbox
-  message: |
-    {% if nuki.deployments_list_ | length == 0 %}There are no deployments to modify {% else %}
-    Which deployment would you like to modify?{% endif %}
+  message: Which deployment would you like to modify?
   choices: "{{ nuki.deployments_list_ }}"
-  when: "{{ nuki.action_ == 'modify' }}"
+  when:
+    - "{{ 'modify' in nuki.action_ }}"
+    - "{{ nuki.deployments_list_ | length != 0 }}"
 
+modify_warning:
+  type: print
+  statement: There are no deployments to modify
+  when:
+    - "{{ 'modify' in nuki.action_ }}"
+    - "{{ nuki.deployments_list_ | length == 0 }}"
+  
 modify_:
   type: editor
   message: Writer
-  when: "{{ nuki.action_ == 'modify' }}"
+  when:
+    - "{{ 'modify' in nuki.action_ }}"
+    - "{{ nuki.deployments_list_ | length != 0 }}"
+  loop: "{{ nuki.modify_list_ }}"
   eargs:
+    filename: "deployments/{{ nuki.item }}"
     editor: nano
     ext: .yaml
+    save: true
 
 # Apply
 apply_choices_:
