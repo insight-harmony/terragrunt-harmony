@@ -1,6 +1,10 @@
 ---
 # Script to install dependencies
 
+installs_intro_:
+  type: print
+  statement: Installing software
+
 action:
   type: select
   message: Do you want to manually select dependencies or simply install all of them?

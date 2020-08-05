@@ -45,7 +45,7 @@ deployment_id: 1  # Something to discriminate between deployments - ie blue/gree
 
 `terragrunt-harmony/deployments/harmony.mainnet.prod.aws.us-east-1.validator.1.yaml`
 
-Deployment files are created locally by the nukikata CLI in the `deployments` directory and contain all the variables to configure a stack. These variables are lifted out of the underlying terraform modules. 
+Deployment files are created locally by the nukikata CLI in the `deployments` directory and contain all the variables to configure a stack. These variables are lifted out of the underlying terraform modules.
 
 **Remote State:**
 

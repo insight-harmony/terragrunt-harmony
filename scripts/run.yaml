@@ -1,6 +1,10 @@
 ---
 # Script that is called from the root nuki.yaml to apply or destroy
 
+run_intro_:
+  type: print
+  statement: "{{ run.action }}ing deployment"
+
 create_run_file_:
   type: yaml
   path: run.yml

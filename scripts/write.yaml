@@ -1,6 +1,10 @@
 ---
 # Write the deployment file to the `deployments` directory
 
+write_intro_:
+  type: print
+  statement: Writing deployment
+
 deployment_keys_:
   type: stat
   loop: "{{ write.settings_.deployment_id_label_order }}"
@@ -45,4 +49,3 @@ deployment_overwrite_:
   when:
     - "{{ write.deployment_overwrite_confirm_ is defined }}"
     - "{{ write.deployment_overwrite_confirm_ }}"
-

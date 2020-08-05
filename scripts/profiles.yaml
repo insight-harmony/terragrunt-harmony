@@ -5,6 +5,10 @@
 # - They have several fields that have keys that produce a list of profiles.
 # - These profiles all have a `name` that is the id of the profile that is looked when applying or destroying.
 
+profiles_intro_:
+  type: print
+  statement: Configuring SSH and wallet profiles
+
 choice_:
   type: checkbox
   message: Which profiles would you like to set?
@@ -116,7 +120,7 @@ wallet_path_:
   when:
     - "{{ 'wallet' in profiles.choice_ }}"
     - "{{ profiles.wallet_options_ == 'wallet-path' }}"
-  default: "~/harmony/"
+  default: "~/Documents/harmony/"
 
 wallet_path_add_:
   type: yaml

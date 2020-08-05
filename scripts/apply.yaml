@@ -1,5 +1,10 @@
 ---
 # Script that is called from the <stack>/<provider> nuki.yaml
+
+apply_intro_:
+  type: print
+  statement: Applying deployment
+
 create_run_file_:
   type: yaml
   path: "{{ apply.run_file_ }}"
