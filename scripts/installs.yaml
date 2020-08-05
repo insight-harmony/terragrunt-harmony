@@ -17,23 +17,25 @@ auto_deps:
   when:
     - "{{ installs.action == 'auto' }}"
   input:
+    devops_deps:
+      - terragrunt
+      - terraform
+      - blockchain-tools
+      - ansible
+      - awscli
     harmony_deps:
       - hmy_cli
       - rclone
     blockchain_deps:
       - harmony
     deps:
-      - terragrunt
-      - terraform
       - blockchain-tools
-      - ansible
-      - awscli
+      - devops
 
 auto_installs:
   type: nukikata
   template: https://github.com/insight-infrastructure/nukikata-installs
-  existing_context:
-    deps: "{{ installs.auto_deps }}"
+  existing_context: "{{ installs.auto_deps }}"
   when: "{{ 'auto' == installs.action }}"
 
 manual_installs:
