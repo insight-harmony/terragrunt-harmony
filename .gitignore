@@ -19,8 +19,9 @@ scratch*
 #
 secrets.yml
 run.yml
-deployments/
-!deployments/.gitkeep
+deployments/*
+wallets/*
+!/**/.gitkeep
 .circleci/.configs
 ansible_inventory.tpl
 

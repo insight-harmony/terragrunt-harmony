@@ -141,14 +141,15 @@ wallet_keygen_path_:
   when:
     - "{{ 'wallet' in profiles.choice_ }}"
     - "{{ profiles.wallet_options_ == 'wallet-gen' }}"
-  default: "{{cwd}}/{{ profiles.wallet_profile_name_ }}"
+  default: "{{cwd}}/wallets/{{ profiles.wallet_profile_name_ }}"
 
 wallet_keygen_:
   type: command
   when:
     - "{{ 'wallet' in profiles.choice_ }}"
     - "{{ profiles.wallet_options_ == 'wallet-gen' }}"
-  command: hmy keys generate-bls-key --bls-file-path {{ profiles.wallet_keygen_path_ }}
+  command: |
+    hmy keys generate-bls-key --bls-file-path {{ profiles.wallet_keygen_path_ }}
 
 wallet_keygen_add_:
   type: yaml
