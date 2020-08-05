@@ -4,7 +4,7 @@
 
 Reference architecture for the Harmony blockchain. 
 
-##$ Deployment Process 
+### Deployment Process 
 
 ```
 git clone https://github.com/insight-harmony/terragrunt-harmony

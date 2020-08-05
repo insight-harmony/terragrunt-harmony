@@ -1,6 +1,6 @@
 # Providers
-providers:
-  type: checkbox
+cloud_provider:
+  type: select
   message: What cloud providers do you want to deploy on?
   choices:
     - aws: AWS
@@ -8,23 +8,28 @@ providers:
     - do: DigitalOcean
     - gcp: GCP
 
+secrets_read_:
+  type: nukikata
+  merge: true
+  context_file: "{{ nuki.scripts_dir_ }}/secrets.yaml"
+  existing_context: "{{ nuki }}"
+
 # Regions
-# Aws
+## Aws
 aws_regions_options_:
   type: aws_regions
-  when: "{{ 'aws' in nuki.providers }}"
+  when: "{{ nuki.cloud_provider == 'aws' }}"
 
-aws_regions_:
-  type: checkbox
-  message: Which AWS regions?
+aws_region:
+  type: select
+  message: Which AWS region?
   choices: "{{ nuki.aws_regions_options_ }}"
-  when: "{{ 'aws' in nuki.providers }}"
+  when: "{{ nuki.cloud_provider == 'aws' }}"
 
 aws_provider:
   type: nukikata
   chdir: aws
-  when: "{{ 'aws' in nuki.providers }}"
-  loop: "{{ nuki.aws_regions_ }}"
+  when: "{{ nuki.cloud_provider == 'aws' }}"
   existing_context: "{{ nuki }}"
 
 ## GCP
