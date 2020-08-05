@@ -8,7 +8,9 @@ run_intro_:
 create_run_file_:
   type: yaml
   path: run.yml
-  remove: action
+  remove:
+    - action
+    - ^_
   contents: "{{ run }}"
 
 apply_:
